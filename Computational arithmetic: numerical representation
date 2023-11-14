@@ -71,3 +71,102 @@ The representation of non-positive integers is carried out using the idea of the
 assignment_ind
 Comment
 There are several ways to solve this problem, but that is not the objective of this content.
+
+Representation of real numbers
+The real number 95.32, represented in decimal base (10), can be written as follows:
+
+
+Now, let's generalize this idea: a real number r in base ten (10), with n+1 digits in the integer part and m digits in the fractional part, can be represented as:
+
+ 
+
+Using the same reasoning, a real number r, represented in a base b, can be written as follows:
+Change from base ten (10) to base b
+To perform the change from base ten to a representation in base b of a real number in the format r = i,f; where:
+
+i
+It's the whole part.
+
+f
+It's the fractional part.
+
+We must repair both parts, that is, make r = i + 0,f; taking 95 as an example, we have 32 = 95 +0.32. We have already seen in the previous sections the transformation of the entire part; Now, let's focus only on the fractional part 0,f. So, let's consider that our real number r only contains the fractional part:
+
+
+The procedure would be, firstly, to remember that, to transform an integer in base (10) to a base b, we would have to divide the number by b, successively, and obtain the remainders. The idea will be the same, but with one difference, instead of doing divisions, we will do multiplications, that is, the first step will be to multiply the real number r by the base you want to transform, b. In mathematical symbols, we would have:
+
+
+You get an integer part, d-1, and the fractional part starts with d-2. Multiplying the remaining fractional part by b, the result will be d-2, and so on. Next, we will see two examples of converting the real numbers 0.625 and 0.2 to binary base, that is, base two (2):
+
+Example 1
+0.625 x 2 = 1.250 = 1 + 0.250
+
+0.250 x 2 = 0.500 = 0 +0.500
+
+0.500 x 2 = 1.000 = 1 + 0.000
+
+Therefore, (0.625)10 = (0.101)2.
+
+Example 2
+0.2 x 2 =0.4 = 0 + 0.4
+
+0.4 x 2 = 0.8 = 0 + 0.8
+
+0.8 x 2 = 1.6 = 1 + 0.6
+
+0.6 x 2 =1.2 = 1 + 0.2
+
+It starts repeating, therefore, (0,2)10 = (0.001100110011...)2.
+
+These two examples illustrate that it is possible, in a base two transformation of a real number in base 10, to obtain a result whose representation has a finite number of zeros and ones or an infinite number (periodic decimal) of zeros and ones.
+
+Changing from base b to base 10
+Let r be a real number in base b, (0, d-1d-2....d-m )b, to obtain its representation in base 10, simply apply the mathematical formula already seen in the previous section:
+
+
+For example, convert the number (0.561)8 to base 10 by applying the formula:
+
+
+Scientific notation of real numbers
+In science, it is common to find phenomena or quantities whose values are high or low, for example, in Astronomy or Nanotechnology. To represent these numbers, a large number of digits are required. The solution to this problem is to use scientific notation, whose representation of a real number is given as follows:
+
+
+Where:
+
+M
+It is a non-negative real integer, called a mantissa.
+
+b ≥ 2
+It is a positive integer, called the base.
+
+It is
+It's called an exponent.
+
+However, this notation has an ambiguity. The number 0.1, for example, can be represented in equivalent ways:
+
+
+To resolve this situation, the following condition was imposed on the mantissa:
+
+
+This condition defines a normalized notation.
+
+Floating point representation
+Scientific notation covers all real numbers and, as we know, this quantity is infinite, which makes it impossible to implement on a computer that has a finite number of digits. The solution was to slightly modify the normalization of scientific notation as follows:
+
+Mantissa
+Change to a finite number p of digits.
+
+Exponent
+Create a range for the exponent, that is, the exponent e has a minimum value (emin) and a maximum value (emax).
+
+The notation we will use is FP(b,p, emin, emax), to refer to the number in the floating point system with base b, in which the mantissa has p digits (in base b) and the exponents are contained in the closed interval [emin, emax], that is, r=0 or r=±M×be, where b-1 ≤ M ≤ 1 - b-p.
+
+We take as an example a real number represented in floating point FP(10,4,-99,99). It can be written generically as r=±(0,d-1 d-2 d-3 d-4)×10e, where -99≤ e ≤ 99. Note that this representation is not capable of representing the real number 0 ,1x10100, as the exponent is equal to 100 > 99, which is the maximum exponent.
+
+report_problem
+Attention
+In mathematical modeling, this is called overflow. Similarly, 0.1x10-100, and the reason is the same -100<-99, which is the minimum value. This situation is defined as underflow.
+
+video_library
+Base Changes in Python
+In the following video, we will cover the main commands in Python that are used to change bases.
