@@ -1,0 +1,73 @@
+Representation of integers
+Representation of positive integers
+The representation of positive integers in the decimal base (10) consists of a digit number (0,1,2,3,4,5,6,7,8,9), which depends on the respective position in the representation.
+
+extension
+Example
+The number 179 means one (1) hundred (100) plus (+) seven (7) tens (10) and nine (9) units, or, in simplified form, using mathematical symbols: 179 = 1x102 + 7x10 + 9.
+
+Now, let's generalize this mathematical notation. To do this, we will adopt the letter di as a representation for any decimal numeric digit, where i is the position in the number N with n+1 digits. For example, in the number 179, the decimal digit 1 is in position i=2; 7 at position i=1; and 9 at position i=0. In a form of mathematical notation, we have:
+Another common notation to represent a positive integer in base 10 is (dndn-1....di...d1d0 )10. This notation leads us to another, if one wishes to represent the number with a base other than 10, which would be N=(dndn-1....di...d1d0 )b , with b being a base other than 10; consequently, we will have 0≤ di < b.
+
+
+The most common bases in computational arithmetic are:
+
+b=2
+Binary
+
+b=8
+octadecimal
+
+b=16
+Hexadecimal
+
+Note that for b=2, by definition, the possible values of d are 0 or 1; similarly, when b=8, the values they can assume are 0, 1, 2, 3, 4, 5, 6 and 7. For digits greater than 9, we adopt the letters of our alphabet, that is, A, B, C,…. In this case, for the hexadecimal base (b=16), the possible digits are 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E and F, where A corresponds, in decimal base, to the number 10, B corresponds to 11, and so on, until F, which corresponds to 15. Let's look at some examples:
+
+ 
+
+Changing from base b to decimal base 10 and from base 10 to base b
+The conversion of a positive integer, which is found in a numerical base b to the decimal base (10), is possible by solving the following expression:
+
+
+So, see the following example:
+
+ 
+
+Generally:
+
+
+Where N will have other digits in base 10, as seen in the previous examples.
+
+To convert a positive integer N in base 10 to a base b, it is necessary to determine its respective digits: di, de (dn dn-1....di,...d1 d0 )b. To understand the procedure, we must remember the algorithm for dividing positive integers, where, when dividing a number D by a number d, a quotient q and a remainder r are obtained; and when r=0, we say that the division was exact and the remainder can only take the values of 0,1,2...d-1. Formalizing by mathematical symbols:
+
+D=d×q+r, where 0≤ r ≤d-1
+
+Now, let's divide N, in base 10, by the base b that we want to transform. Thus, D=N and d=b, making it necessary to find out who will be the q and the r. Remembering the principle of equality: if A=b, then B=A. We can observe that, when changing base b to base 10, we have:
+
+
+Therefore, according to the principle of equality:
+
+ 
+
+If we highlight b in the first n-1 terms of the second part of the expression, we obtain:
+
+
+Comparing with D=dxq +r, we conclude that:
+
+
+So, when we divide the positive integer N, in base 10, by a number b in the desired base, we obtain the remainder r equal to the last digit d0 of the N-decimal representation in base b. We know, from the previous example, that 2605 = (A2D)16, where the letter D is the last digit in the base 16 representation; in fact, when we divide 2605 by 16, the result is, as a quotient, q=162 and remainder r=13, which, in base 16 representation, is the letter D.
+
+Therefore, the process adopted will be to divide N by b and obtain q0 and r0 = d0; then, q0 is divided by b, resulting in q1 and r1 = d1, and so on; the respective remainders will be the digits di, in base b, and the quotient of the nth and final division will be dn.
+
+report_problem
+Attention
+A bit (binary digit) is defined as the basic memory element of a computer that assumes two states, which are represented by the digits zero (0) and one (1). The number of bits available for a numerical representation of positive integers corresponds to the largest integer that the computer can represent, that is, with m bits it is possible to represent 2m numbers. For example, to represent the eight decimal digits, three bits would be needed, as 23 = 8, however, to represent 10 decimal digits, four bits would be needed, as 24 = 16 configurations, which is surplus, that is, in the decimal system there are waste of bits.
+Representation of negative integers
+
+Binary
+
+The representation of non-positive integers is carried out using the idea of the bit, that is, the representations of zero (0) or one (1) are agreed to have positive (+) or negative (-) signs. The only problem with this representation occurs in operations to obtain the numbers +0 and -0, which, although for the computer they are different numbers, we know that they are the same.
+
+assignment_ind
+Comment
+There are several ways to solve this problem, but that is not the objective of this content.
