@@ -1,0 +1,44 @@
+We will make a Python program to evaluate a simple formula. Our first example concerns the programming of a mathematical model that calculates the height of an object thrown in a vertical direction, starting from an initial height equal to zero. From Newton's 2nd law, and assuming negligible air resistance, we obtain a mathematical model that determines the vertical position y of the ball at time t:
+
+
+Where:
+
+V0
+It is the initial speed of the ball.
+
+g
+It is the acceleration of gravity at the location, which can be approximated by 10m/s2.
+
+To obtain the height over time, we need to know the initial speed, which, for our example, will be 5m/s. Then, we can write a file called Primeiroprograma.py, with the following content:
+
+Python
+content_copy
+
+Now, let's understand the lines of what would be our first Python program.
+
+code
+#
+The first observation we are going to make is about words starting with #. This means that the interpreter that will execute your program will consider what comes after # as comments. This is very important for documenting your program, and sometimes reminding ourselves of what we are actually doing.
+
+code
+v0 = 5 # Initial speed
+This line is a variable assignment, that is, every time v0 appears, Python will understand that it is a representation of 5m/s. A simple way to understand what assignment is would be to think that Python generates a "box" in the computer (memory) with the name v0 written at the top. The number 5 is then placed in that box. Whenever Python later encounters the name v0 in the code, it finds the box, so Python takes out the number five and replaces the name v0 with the number. This also happens with the following lines: g = 10 and t = 0.5.
+
+code
+y = v0 * t - 0.5 * g * t ** 2 # Vertical position
+Python already knows three “boxes” with their respective values v0, g and t, so the next line contains the formula for our mathematical model: y = v0 * t - 0.5 * g * t ** 2. Again, in agreement With its rules, Python interprets * as multiplication, - as minus, and ** as exponentiation. Python does the math and assigns the result (in this case, the number 1.25) to the variable named y.
+
+code
+print(y)
+In the last line, the print(y) command comes, which is a command to print the value of y on the screen, because, if this print function is not included, Python would execute the formula and assign the value of 1 to the “box” y. .25 and nothing appeared on the screen.
+
+Let's talk a little about the term variable assignment. Note that we use the = operator to assign a numerical value to a representation, as in the example v0, t and g. In this point, the programming language differs from the mathematical language. To exemplify this difference, we will use the expression x= 4-x. See what this expression means in each case:
+
+Mathematics
+It is a simple equation, where the variable x = 2.
+
+close
+Schedule
+It is necessary to know what the value x is on the right side, subtract it from 4 and attribute this result to x on the left side. Generally, this happens in iterative processes.
+
+In the next sections, some basic Python commands and structures will be presented, remembering that the sections are not an in-depth look at the Python language, but the basics to start working with mathematical modeling.
