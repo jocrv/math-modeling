@@ -1,0 +1,14 @@
+Description
+Systems of linear equations and curve fitting, using examples in the Python language, and classical methods for solving linear systems in direct and iterative form and Lagrange and Newton interpolation.
+
+Purpose
+Solving linear systems and interpolation and curve adjustment is essential for training a professional who will work with mathematical modeling.
+
+Preparation
+Before starting to study this content, search and access the pages indicated for executing the scripts:
+
+a) Python: https://www.python.org/
+
+b) Jupyter: https://jupyter.org/try
+
+c) Google: https:/research.google.com/colaboratory/
