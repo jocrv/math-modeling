@@ -1,0 +1,90 @@
+In this module, we will analyze how much the finite representation of floating points influences real numbers. For example, if we check in Python whether 22 = 4, the answer will be true, but when we check whether
+, the answer is false.
+
+Representation errors
+The floating point representation can only be performed exactly for some numbers. For other real numbers, it may indicate an error, logically assuming that the numbers are not overflow or underflow. We will define a real number, which is contained in a floating point system FP(b,p, emin, emax), in an exact way, of r=fl(r). Otherwise, we will get the answer r=fl(r) + error.
+
+If it is not possible to represent the real number r in the floating point system exactly, there are two possible techniques fl(r):
+Given a mantissa M of a real number r, with number of digits m> p, where p is the number of digits in the floating point system; truncation is defined by disregarding all digits starting from position p+1. For example, be the real number, in its scientific notation in base 10, equal to r=0.341592654 x 10, if we represent it in a floating point system FP(10,4,-99,99), then the result will be fl(r) = 0.3415x10.
+This technique is the most common and aims to reduce the error between the floating point fl(r) and the exact value r, that is, the closest value. Using the previous example, approximating fl(r) to 0.3416x10 has a smaller error than approximating it to the truncated value.
+
+The approximate rounding criterion can sometimes present an ambiguity, for example, when the real number 0.15 is rounded to one digit, the numbers 0.1 and 0.2 are equally close. To solve this problem, several solutions have been developed and, for the binary system (b=2) and decimal system (b=10), the most common is to round so that the last digit is even.
+Attention
+Rounding by truncation and approximation is performed only in the mantissa, that is, an error in the exponent is not considered.
+
+Now, we can analyze the representation errors of a real number without loss of generality. We will only consider the exact positive real numbers in normalized scientific notation, that is, r = Mxbt, and their corresponding in the floating point system fl(r) = mxbt, not necessarily normalized. It is defined as absolute error E by:
+
+
+It is possible to demonstrate that
+  for truncation and
+ 
+  for approach. It is defined as relative error and:
+
+ 
+
+In a similar way, it can be demonstrated that
+  for truncation and
+ 
+  to the approximation, where u is called the rounding unit.
+
+extension
+Example
+To determine the rounding unit u of FP(2.24,-99.99) for truncation, we have:
+.
+Sum
+
+Subtraction
+
+For multiplication and division, we have:
+
+Multiplication
+
+Division
+
+We can observe that in the four operations, considering the integer exponents, these are not sources of errors, only in cases of overflow and underflow. Therefore, the sources of errors are found in the operations of the mantissas. Let's consider two positive real values, x1=m1ba and x2=m2bc , and let x1 > x2 be the exact values:
+
+Sum
+y= x1 + x2
+
+Subtraction
+y= x1 - x2
+
+Multiplication
+y= x1 * x2
+
+Division
+y= x1 / x2
+
+Next, we will define operations in the floating point system. For example, when we calculate 1/7 + 1/60 in the decimal system FP(10,4,-2,2), we have:
+
+ 
+
+However, the exact result is 67/20 = 0.1595238… and the absolute and relative errors are E=(0.76)*10-4 and e=(0.48)*10-3. Now, let's estimate, in general, the absolute and relative errors for the four operations and, as already seen, fl(x) = x(1 +e) and |e|< u (rounding unit). Let's go:
+To understand better, let's calculate the subtraction of the values x1 =0.43787 *10-2 and x2 =0.43783 *102, for the floating point system FP(10,4,-99.99), and obtain the errors absolute and relative. To start, the exact value of the subtraction y = 0.4 * 10-6 and for the floating point system, fl(x1 - x2) =0.1000 * 10-5. This way |E| = 0.60 * 10-6 e |e| = 1.5. Now, we observed that although the absolute error was small, the relative error was high. This problem is known as cancellation, and is common in operations involving subtraction. There are techniques to reduce cancellation and one of them is to add 1 or 2 digits to the representation of the rounded number in the floating point system used.
+Some calculations in Python
+Let's suppose we want to perform the following sums in Python:
+
+1 y = 0.1 + 0.1 + 0.1 we know that the result is 0.3;
+y =
+  for
+  constant and equal to 0.5, the exact value is 15000;
+y =
+  for
+  constant and equal to 0.1, the exact value is 3000.
+Now, see the solution in Python:
+# Sum 1
+  >>>sum = 0.1 + 0.1 + 0.1
+  >>>print('sum = '+str(val))
+  sum =0.30000000000000004
+ 
+  # Sum 2
+  >>>n = 30000
+  >>>list1 = [0.5] * n
+  >>> print('sum(lista1) = '',sum(lista1)')
+  sum(lista1) = 15000.0
+ 
+  # Sum 3
+  >>>n = 30000
+  >>>list2 = [0.1] * n
+  >>> print('sum(lista2) = '',sum(lista1)')
+  sum(lista2) = 2999.999999998367
